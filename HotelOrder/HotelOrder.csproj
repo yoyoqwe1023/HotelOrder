@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -117,14 +125,108 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Action.cs">
+      <DependentUpon>dbHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ActionDescribe.cs">
+      <DependentUpon>dbHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Activity.cs">
+      <DependentUpon>dbHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ActivityReference.cs">
+      <DependentUpon>dbHotel.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Comments.cs">
+      <DependentUpon>dbHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="dbHotel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbHotel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbHotel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbHotel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbHotel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Discount.cs">
+      <DependentUpon>dbHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DiscountReference.cs">
+      <DependentUpon>dbHotel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HotelFacilities.cs">
+      <DependentUpon>dbHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HotelIndustries.cs">
+      <DependentUpon>dbHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HotelRegionName.cs">
+      <DependentUpon>dbHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MultipleHotelFacilities.cs">
+      <DependentUpon>dbHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MultipleRoomFacilities.cs">
+      <DependentUpon>dbHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderDetails.cs">
+      <DependentUpon>dbHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderDetailStatus.cs">
+      <DependentUpon>dbHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Orders.cs">
+      <DependentUpon>dbHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderSpecialRequest.cs">
+      <DependentUpon>dbHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Payments.cs">
+      <DependentUpon>dbHotel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Room.cs">
+      <DependentUpon>dbHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoomAdmin.cs">
+      <DependentUpon>dbHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoomClass.cs">
+      <DependentUpon>dbHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoomFacilities.cs">
+      <DependentUpon>dbHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoomImage.cs">
+      <DependentUpon>dbHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoomMember.cs">
+      <DependentUpon>dbHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoomStyle.cs">
+      <DependentUpon>dbHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoomTimePrice.cs">
+      <DependentUpon>dbHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpecialRequest.cs">
+      <DependentUpon>dbHotel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -152,6 +254,16 @@
     <Content Include="Content\css\_footer.css" />
     <Content Include="Content\css\_testimonial.css" />
     <Content Include="Content\css\_variables.css" />
+    <Content Include="dbHotel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>dbHotel.Context.cs</LastGenOutput>
+      <DependentUpon>dbHotel.edmx</DependentUpon>
+    </Content>
+    <Content Include="dbHotel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>dbHotel.edmx</DependentUpon>
+      <LastGenOutput>dbHotel.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -255,6 +367,13 @@
     <Content Include="image\banner\banner-2_tmp18321" />
     <Content Include="image\elements\_DS_Store" />
     <Content Include="image\favicon_tmp18091" />
+    <EntityDeploy Include="dbHotel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>dbHotel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="dbHotel.edmx.diagram">
+      <DependentUpon>dbHotel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -314,6 +433,8 @@
     <Content Include="Scripts\vendors\linericon\fonts\Linearicons-Free.ttf" />
     <Content Include="Scripts\vendors\linericon\fonts\Linearicons-Free.woff" />
     <Content Include="Scripts\vendors\linericon\fonts\Linearicons-Free.woff2" />
+    <Content Include="Views\Comment\List.cshtml" />
+    <Content Include="Views\Comment\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -345,6 +466,9 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

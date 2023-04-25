@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="564bb3a5617d4fcd8b7820c16830fc2f" Name="Diagram1">
+        <EntityTypeShape EntityType="HotelOrderModel.Action" Width="1.5" PointX="3.75" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelOrderModel.ActionDescribe" Width="1.5" PointX="6" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelOrderModel.Activity" Width="1.5" PointX="6" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelOrderModel.ActivityReference" Width="1.5" PointX="8.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelOrderModel.Comments" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelOrderModel.Discount" Width="1.5" PointX="0.75" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelOrderModel.DiscountReference" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelOrderModel.HotelFacilities" Width="1.5" PointX="3.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelOrderModel.HotelIndustries" Width="1.5" PointX="3.75" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelOrderModel.HotelRegionName" Width="1.5" PointX="1.5" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelOrderModel.MultipleHotelFacilities" Width="1.5" PointX="6" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelOrderModel.MultipleRoomFacilities" Width="1.5" PointX="8.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelOrderModel.OrderDetails" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelOrderModel.OrderDetailStatus" Width="1.5" PointX="6" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelOrderModel.Orders" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelOrderModel.OrderSpecialRequest" Width="1.5" PointX="10.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelOrderModel.Payments" Width="1.5" PointX="6" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelOrderModel.Room" Width="1.5" PointX="6" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelOrderModel.RoomAdmin" Width="1.5" PointX="1.5" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelOrderModel.RoomClass" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelOrderModel.RoomFacilities" Width="1.5" PointX="6" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelOrderModel.RoomImage" Width="1.5" PointX="8.25" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelOrderModel.RoomMember" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelOrderModel.RoomStyle" Width="1.5" PointX="3.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelOrderModel.RoomTimePrice" Width="1.5" PointX="3" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelOrderModel.SpecialRequest" Width="1.5" PointX="8.25" PointY="16.25" IsExpanded="true" />
+        <AssociationConnector Association="HotelOrderModel.FK_ActionDescribe_Action" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelOrderModel.FK_ActionDescribe_RoomMember" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelOrderModel.FK_ActivityReference_Activity" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelOrderModel.FK_ActivityReference_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelOrderModel.FK_Comments_RoomClass" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelOrderModel.FK_Comments_RoomMember" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelOrderModel.FK_DiscountReference_Discount" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelOrderModel.FK_DiscountReference_RoomMember" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelOrderModel.FK_MultipleHotelFacilities_HotelFacilities" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelOrderModel.FK_HotelIndustries_HotelRegionName" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelOrderModel.FK_MultipleHotelFacilities_HotelIndustries" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelOrderModel.FK_Room_HotelIndustries" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelOrderModel.FK_MultipleFacilities_Facilities" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelOrderModel.FK_MultipleFacilities_Room" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelOrderModel.FK_OrderDetails_OrderDetailStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelOrderModel.FK_OrderDetails_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelOrderModel.FK_OrderDetails_Payments" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelOrderModel.FK_OrderSpecialRequest_OrderDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelOrderModel.FK_Orders_RoomMember" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelOrderModel.FK_OrderSpecialRequest_SpecialRequest" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelOrderModel.FK_Room_RoomAdmin" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelOrderModel.FK_Room_RoomClass" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelOrderModel.FK_Room_RoomStyle" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelOrderModel.FK_RoomImage_Room" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelOrderModel.FK_RoomMember_RoomAdmin" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelOrderModel.FK_RoomTimePrice_RoomClass" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

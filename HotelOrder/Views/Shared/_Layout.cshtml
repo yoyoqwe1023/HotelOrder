@@ -132,19 +132,26 @@
                 <!--Collect the nav links, forms, and other content for toggling-->
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                     <ul class="nav navbar-nav menu_nav ml-auto">
-                        <li class="nav-item active"><a class="nav-link" href="index.html">首頁</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.html">關於我們</a></li>
-                        <li class="nav-item"><a class="nav-link" href="accomodation.html">房型介紹</a></li>
-                        <li class="nav-item"><a class="nav-link" href="gallery.html">活動</a></li>
-                        <li class="nav-item submenu dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                                <li class="nav-item"><a class="nav-link" href="blog-single.html">Blog Details</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="elements.html">交通資訊</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact.html">聯絡我們</a></li>
+                        <li class="nav-item active">@Html.ActionLink("首頁", "List", "Comment", null, new {@class="nav-link"})</li>
+                        <li class="nav-item active">@Html.ActionLink("關於", "List", "Comment", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item active">@Html.ActionLink("房型", "List", "Comment", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item active">@Html.ActionLink("活動", "List", "Comment", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item active">@Html.ActionLink("評論", "List", "Comment", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item active">@Html.ActionLink("交通資訊", "List", "Comment", null, new { @class = "nav-link" })</li>
+
+                        @*<li class="nav-item active"><a class="nav-link" href="index.html">首頁</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">關於我們</a></li>
+        <li class="nav-item"><a class="nav-link" href="accomodation.html">房型介紹</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">活動</a></li>
+        <li class="nav-item submenu dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
+            <ul class="dropdown-menu">
+                <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                <li class="nav-item"><a class="nav-link" href="blog-single.html">Blog Details</a></li>
+            </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="elements.html">交通資訊</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">聯絡我們</a></li>*@
                     </ul>
                 </div>
             </nav>
@@ -152,7 +159,7 @@
     </header>
     <!-- ================Header Area =================
     ================Banner Area =================-->
-    <section class="banner_area">
+    <!--<section class="banner_area">
         <div class="booking_table d_flex align-items-center">
             <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
             <div class="container">
@@ -232,10 +239,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
     <!--================Banner Area =================
     ================ Accomodation Area  =================-->
-    <section class="accomodation_area section_gap">
+    <!--<section class="accomodation_area section_gap">
         <div class="container">
             <div class="section_title text-center">
                 <h2 class="title_color">Hotel Accomodation</h2>
@@ -284,10 +291,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
     <!--================ Accomodation Area  =================
     ================ Facilities Area  =================-->
-    <section class="facilities_area section_gap">
+    <!--<section class="facilities_area section_gap">
         <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background="">
         </div>
         <div class="container">
@@ -334,10 +341,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
     <!--================ Facilities Area  =================
     ================ About History Area  =================-->
-    <section class="about_history_area section_gap">
+    <!--<section class="about_history_area section_gap">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 d_flex align-items-center">
@@ -352,10 +359,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
     <!--================ About History Area  =================
     ================ Testimonial Area  =================-->
-    <section class="testimonial_area section_gap">
+    <!--<section class="testimonial_area section_gap">
         <div class="container">
             <div class="section_title text-center">
                 <h2 class="title_color">Testimonial from our Clients</h2>
@@ -420,10 +427,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
     <!--================ Testimonial Area  =================
     ================ Latest Blog Area  =================-->
-    <section class="latest_blog_area section_gap">
+    <!--<section class="latest_blog_area section_gap">
         <div class="container">
             <div class="section_title text-center">
                 <h2 class="title_color">latest posts from blog</h2>
@@ -480,9 +487,12 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
     <!--================ Recent Area  =================
     ================ start footer Area  =================-->
+    <div style="text-align:center; margin-top:5%">
+        @RenderBody()
+    </div>
     <footer class="footer-area section_gap">
         <div class="container">
             <div class="row">
@@ -566,7 +576,7 @@
     <!--================ End footer Area  =================
     Optional JavaScript
     jQuery first, then Popper.js, then Bootstrap JS-->
-    @RenderBody()
+
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.min.js"></script>

@@ -1,0 +1,61 @@
+﻿@model IEnumerable<HotelOrder.Comments>
+
+@{
+    ViewBag.Title = "Hotel Comment";
+}
+
+<h2>評論一覽</h2>
+
+<p>
+    @Html.ActionLink("新增評論", "Create", null, null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-hover" style="table-layout: fixed">
+    <tr>
+        <th>
+            日期
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.MemberID)*@
+            會員編號
+        </th>
+        <th>
+            房間風格
+        </th>
+        <th>
+            評分
+        </th>
+        <th>
+            評論內容
+        </th>
+        <th></th>
+    </tr>
+    @{ int count = 0;
+        foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CommentDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MemberID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomClassID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CommentPoint)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CommentDetail)
+                </td>
+                <td>
+                    @Html.ActionLink("編輯", "Edit", new { id = item.CommentId }, new { @class = "btn btn-success" })
+                    @*@Html.ActionLink("Details", "Details", new { id = item.CommentId }) |*@
+                    @Html.ActionLink("刪除", "Delete", new { id = item.CommentId }, new { onclick = "return confirm('確定要刪除嗎?')", @class = "btn btn-danger" })
+                    @*@Html.ActionLink("刪除", "Delete", "Customer", new { id = t.fId }, new { onclick = "return confirm('確定要刪除嗎?')", @class = "btn btn-danger" })*@
+                </td>
+            </tr>
+        }
+    }
+</table>

@@ -1,0 +1,1755 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HotelOrderModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Action">
+          <Key>
+            <PropertyRef Name="ActionID" />
+          </Key>
+          <Property Name="ActionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActionName" Type="nvarchar" MaxLength="20" />
+          <Property Name="ActionDescript" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="ActionDescribe">
+          <Key>
+            <PropertyRef Name="ActionToRoomID" />
+          </Key>
+          <Property Name="ActionToRoomID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomID" Type="nvarchar" MaxLength="20" />
+          <Property Name="ActioID" Type="int" />
+          <Property Name="MemberID" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Activity">
+          <Key>
+            <PropertyRef Name="ActivityID" />
+          </Key>
+          <Property Name="ActivityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActivityName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ActivityImage" Type="varbinary(max)" />
+          <Property Name="ActivityDirections" Type="nvarchar(max)" />
+          <Property Name="ActivityTime" Type="datetime" />
+          <Property Name="ActivityPlace" Type="nvarchar" MaxLength="50" />
+          <Property Name="ActivityPeople" Type="int" />
+          <Property Name="ActivityCost" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="ActivityReference">
+          <Key>
+            <PropertyRef Name="ActivityReferenceID" />
+          </Key>
+          <Property Name="ActivityReferenceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActivityID" Type="int" Nullable="false" />
+          <Property Name="OrderID" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="CommentId" />
+          </Key>
+          <Property Name="CommentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CommentDate" Type="datetime" />
+          <Property Name="MemberID" Type="nvarchar" MaxLength="20" />
+          <Property Name="RoomClassID" Type="nvarchar" MaxLength="20" />
+          <Property Name="CommentPoint" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="CommentDetail" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Discount">
+          <Key>
+            <PropertyRef Name="DiscountID" />
+          </Key>
+          <Property Name="DiscountID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DiscountName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="DiscountImage" Type="varbinary(max)" />
+          <Property Name="DiscountDirections" Type="nvarchar(max)" />
+          <Property Name="DiscountStart" Type="datetime" />
+          <Property Name="DiscountEnd" Type="datetime" />
+          <Property Name="DiscountDiscount" Type="numeric" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="DiscountReference">
+          <Key>
+            <PropertyRef Name="DiscountReferenceID" />
+          </Key>
+          <Property Name="DiscountReferenceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DiscountID" Type="int" Nullable="false" />
+          <Property Name="MemberID" Type="nvarchar" MaxLength="20" />
+          <Property Name="Activaled" Type="int" />
+        </EntityType>
+        <EntityType Name="HotelFacilities">
+          <Key>
+            <PropertyRef Name="HotelFacilityID" />
+          </Key>
+          <Property Name="HotelFacilityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HotelFacilityName" Type="nvarchar" MaxLength="20" />
+          <Property Name="HotelFacilityImage" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="HotelIndustries">
+          <Key>
+            <PropertyRef Name="HotelID" />
+          </Key>
+          <Property Name="HotelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HotelName" Type="nvarchar" MaxLength="50" />
+          <Property Name="HotelPhone" Type="nvarchar" MaxLength="20" />
+          <Property Name="HotelRegionID" Type="int" />
+          <Property Name="HotelAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="HotelImage" Type="varbinary(max)" />
+          <Property Name="HotelImageDiscription" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="HotelRegionName">
+          <Key>
+            <PropertyRef Name="HotelRegionID" />
+          </Key>
+          <Property Name="HotelRegionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegionName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MultipleHotelFacilities">
+          <Key>
+            <PropertyRef Name="MultipleHotelFacilityID" />
+          </Key>
+          <Property Name="MultipleHotelFacilityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HotelID" Type="int" />
+          <Property Name="HotelFacilityID" Type="int" />
+        </EntityType>
+        <EntityType Name="MultipleRoomFacilities">
+          <Key>
+            <PropertyRef Name="MultipleRoomFacilitiesID" />
+          </Key>
+          <Property Name="MultipleRoomFacilitiesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomID" Type="nvarchar" MaxLength="20" />
+          <Property Name="RoomFacilityID" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="OrderDetailID" />
+          </Key>
+          <Property Name="OrderDetailID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="OrderID" Type="nvarchar" MaxLength="20" />
+          <Property Name="MoveInDate" Type="datetime" />
+          <Property Name="MoveOutDate" Type="datetime" />
+          <Property Name="PaymentDate" Type="datetime" />
+          <Property Name="PaymentID" Type="int" />
+          <Property Name="PaymentPrice" Type="money" />
+          <Property Name="OrderDetailStatusID" Type="int" />
+          <Property Name="RoomID" Type="nvarchar" MaxLength="20" />
+          <Property Name="OrderDetailRemark" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="OrderDetailStatus">
+          <Key>
+            <PropertyRef Name="OrderDetailStatusID" />
+          </Key>
+          <Property Name="OrderDetailStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderDetaiStatusContent" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MemberID" Type="nvarchar" MaxLength="20" />
+          <Property Name="OrderDate" Type="datetime" />
+          <Property Name="OrderTotalPrice" Type="money" />
+          <Property Name="CheckInPeople" Type="int" />
+          <Property Name="OrderRemark" Type="nvarchar(max)" />
+          <Property Name="OrderClosed" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="OrderSpecialRequest">
+          <Key>
+            <PropertyRef Name="OrderSpecialRequestID" />
+          </Key>
+          <Property Name="OrderSpecialRequestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderDetailID" Type="nvarchar" MaxLength="20" />
+          <Property Name="SpecialRequestID" Type="int" />
+        </EntityType>
+        <EntityType Name="Payments">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Payments" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="RoomID" />
+          </Key>
+          <Property Name="RoomID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="RoomClassID" Type="nvarchar" MaxLength="20" />
+          <Property Name="RoomSize" Type="int" />
+          <Property Name="RoomPeople" Type="int" />
+          <Property Name="RoomStyleID" Type="nvarchar" MaxLength="20" />
+          <Property Name="HotelID" Type="int" />
+          <Property Name="RoomStatus" Type="nvarchar" MaxLength="20" />
+          <Property Name="AdminID" Type="nvarchar" MaxLength="20" />
+          <Property Name="favorite" Type="int" />
+        </EntityType>
+        <EntityType Name="RoomAdmin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="AdminName" Type="nvarchar" MaxLength="20" />
+          <Property Name="AdminPassword" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="RoomClass">
+          <Key>
+            <PropertyRef Name="RoomClassID" />
+          </Key>
+          <Property Name="RoomClassID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="RoomClassName" Type="nvarchar" MaxLength="20" />
+          <Property Name="RoomClassDetail" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="RoomFacilities">
+          <Key>
+            <PropertyRef Name="RoomFacilityID" />
+          </Key>
+          <Property Name="RoomFacilityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomFacilityName" Type="nvarchar" MaxLength="20" />
+          <Property Name="RoomFacilityImage" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="RoomImage">
+          <Key>
+            <PropertyRef Name="RoomImagesID" />
+          </Key>
+          <Property Name="RoomImagesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomImageName" Type="nvarchar(max)" />
+          <Property Name="RoomID" Type="nvarchar" MaxLength="20" />
+          <Property Name="RoomImage" Type="varbinary(max)" />
+          <Property Name="RoomImageDetail" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="RoomMember">
+          <Key>
+            <PropertyRef Name="MemberID" />
+          </Key>
+          <Property Name="AdminID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MemberID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MemberName" Type="nvarchar" MaxLength="20" />
+          <Property Name="MemberBirthday" Type="date" />
+          <Property Name="MemberGender" Type="nvarchar" MaxLength="1" />
+          <Property Name="MemberIdentity" Type="nvarchar" MaxLength="20" />
+          <Property Name="MemberPhone" Type="nvarchar" MaxLength="20" />
+          <Property Name="MemberEMail" Type="nvarchar(max)" />
+          <Property Name="MemberPhoto" Type="varbinary(max)" />
+          <Property Name="MemberPassword" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="RoomStyle">
+          <Key>
+            <PropertyRef Name="RoomStyleID" />
+          </Key>
+          <Property Name="RoomStyleID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="RoomStyleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoomStyleDetail" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="RoomTimePrice">
+          <Key>
+            <PropertyRef Name="TimePriceID" />
+          </Key>
+          <Property Name="TimePriceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomClassID" Type="nvarchar" MaxLength="20" />
+          <Property Name="WeekdayPrice" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="HolidayPrice" Type="decimal" Precision="10" Scale="0" />
+        </EntityType>
+        <EntityType Name="SpecialRequest">
+          <Key>
+            <PropertyRef Name="SpecialRequestID" />
+          </Key>
+          <Property Name="SpecialRequestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SpecialRequestName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_ActionDescribe_Action">
+          <End Role="Action" Type="Self.Action" Multiplicity="0..1" />
+          <End Role="ActionDescribe" Type="Self.ActionDescribe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Action">
+              <PropertyRef Name="ActionID" />
+            </Principal>
+            <Dependent Role="ActionDescribe">
+              <PropertyRef Name="ActioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActionDescribe_RoomMember">
+          <End Role="RoomMember" Type="Self.RoomMember" Multiplicity="0..1" />
+          <End Role="ActionDescribe" Type="Self.ActionDescribe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomMember">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="ActionDescribe">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActivityReference_Activity">
+          <End Role="Activity" Type="Self.Activity" Multiplicity="1" />
+          <End Role="ActivityReference" Type="Self.ActivityReference" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activity">
+              <PropertyRef Name="ActivityID" />
+            </Principal>
+            <Dependent Role="ActivityReference">
+              <PropertyRef Name="ActivityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActivityReference_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="ActivityReference" Type="Self.ActivityReference" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="ActivityReference">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_RoomClass">
+          <End Role="RoomClass" Type="Self.RoomClass" Multiplicity="0..1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomClass">
+              <PropertyRef Name="RoomClassID" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="RoomClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_RoomMember">
+          <End Role="RoomMember" Type="Self.RoomMember" Multiplicity="0..1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomMember">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiscountReference_Discount">
+          <End Role="Discount" Type="Self.Discount" Multiplicity="1" />
+          <End Role="DiscountReference" Type="Self.DiscountReference" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Discount">
+              <PropertyRef Name="DiscountID" />
+            </Principal>
+            <Dependent Role="DiscountReference">
+              <PropertyRef Name="DiscountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiscountReference_RoomMember">
+          <End Role="RoomMember" Type="Self.RoomMember" Multiplicity="0..1" />
+          <End Role="DiscountReference" Type="Self.DiscountReference" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomMember">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="DiscountReference">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelIndustries_HotelRegionName">
+          <End Role="HotelRegionName" Type="Self.HotelRegionName" Multiplicity="0..1" />
+          <End Role="HotelIndustries" Type="Self.HotelIndustries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelRegionName">
+              <PropertyRef Name="HotelRegionID" />
+            </Principal>
+            <Dependent Role="HotelIndustries">
+              <PropertyRef Name="HotelRegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MultipleFacilities_Facilities">
+          <End Role="RoomFacilities" Type="Self.RoomFacilities" Multiplicity="0..1" />
+          <End Role="MultipleRoomFacilities" Type="Self.MultipleRoomFacilities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomFacilities">
+              <PropertyRef Name="RoomFacilityID" />
+            </Principal>
+            <Dependent Role="MultipleRoomFacilities">
+              <PropertyRef Name="RoomFacilityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MultipleFacilities_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+          <End Role="MultipleRoomFacilities" Type="Self.MultipleRoomFacilities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="RoomID" />
+            </Principal>
+            <Dependent Role="MultipleRoomFacilities">
+              <PropertyRef Name="RoomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MultipleHotelFacilities_HotelFacilities">
+          <End Role="HotelFacilities" Type="Self.HotelFacilities" Multiplicity="0..1" />
+          <End Role="MultipleHotelFacilities" Type="Self.MultipleHotelFacilities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelFacilities">
+              <PropertyRef Name="HotelFacilityID" />
+            </Principal>
+            <Dependent Role="MultipleHotelFacilities">
+              <PropertyRef Name="HotelFacilityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MultipleHotelFacilities_HotelIndustries">
+          <End Role="HotelIndustries" Type="Self.HotelIndustries" Multiplicity="0..1" />
+          <End Role="MultipleHotelFacilities" Type="Self.MultipleHotelFacilities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelIndustries">
+              <PropertyRef Name="HotelID" />
+            </Principal>
+            <Dependent Role="MultipleHotelFacilities">
+              <PropertyRef Name="HotelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_OrderDetailStatus">
+          <End Role="OrderDetailStatus" Type="Self.OrderDetailStatus" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderDetailStatus">
+              <PropertyRef Name="OrderDetailStatusID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="OrderDetailStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_Payments">
+          <End Role="Payments" Type="Self.Payments" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payments">
+              <PropertyRef Name="PaymentID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="PaymentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_RoomMember">
+          <End Role="RoomMember" Type="Self.RoomMember" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomMember">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderSpecialRequest_OrderDetails">
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="0..1" />
+          <End Role="OrderSpecialRequest" Type="Self.OrderSpecialRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderDetails">
+              <PropertyRef Name="OrderDetailID" />
+            </Principal>
+            <Dependent Role="OrderSpecialRequest">
+              <PropertyRef Name="OrderDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderSpecialRequest_SpecialRequest">
+          <End Role="SpecialRequest" Type="Self.SpecialRequest" Multiplicity="0..1" />
+          <End Role="OrderSpecialRequest" Type="Self.OrderSpecialRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SpecialRequest">
+              <PropertyRef Name="SpecialRequestID" />
+            </Principal>
+            <Dependent Role="OrderSpecialRequest">
+              <PropertyRef Name="SpecialRequestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Room_HotelIndustries">
+          <End Role="HotelIndustries" Type="Self.HotelIndustries" Multiplicity="0..1" />
+          <End Role="Room" Type="Self.Room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelIndustries">
+              <PropertyRef Name="HotelID" />
+            </Principal>
+            <Dependent Role="Room">
+              <PropertyRef Name="HotelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Room_RoomAdmin">
+          <End Role="RoomAdmin" Type="Self.RoomAdmin" Multiplicity="0..1" />
+          <End Role="Room" Type="Self.Room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomAdmin">
+              <PropertyRef Name="AdminID" />
+            </Principal>
+            <Dependent Role="Room">
+              <PropertyRef Name="AdminID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Room_RoomClass">
+          <End Role="RoomClass" Type="Self.RoomClass" Multiplicity="0..1" />
+          <End Role="Room" Type="Self.Room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomClass">
+              <PropertyRef Name="RoomClassID" />
+            </Principal>
+            <Dependent Role="Room">
+              <PropertyRef Name="RoomClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Room_RoomStyle">
+          <End Role="RoomStyle" Type="Self.RoomStyle" Multiplicity="0..1" />
+          <End Role="Room" Type="Self.Room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomStyle">
+              <PropertyRef Name="RoomStyleID" />
+            </Principal>
+            <Dependent Role="Room">
+              <PropertyRef Name="RoomStyleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomImage_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+          <End Role="RoomImage" Type="Self.RoomImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="RoomID" />
+            </Principal>
+            <Dependent Role="RoomImage">
+              <PropertyRef Name="RoomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomMember_RoomAdmin">
+          <End Role="RoomAdmin" Type="Self.RoomAdmin" Multiplicity="1" />
+          <End Role="RoomMember" Type="Self.RoomMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomAdmin">
+              <PropertyRef Name="AdminID" />
+            </Principal>
+            <Dependent Role="RoomMember">
+              <PropertyRef Name="AdminID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomTimePrice_RoomClass">
+          <End Role="RoomClass" Type="Self.RoomClass" Multiplicity="0..1" />
+          <End Role="RoomTimePrice" Type="Self.RoomTimePrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomClass">
+              <PropertyRef Name="RoomClassID" />
+            </Principal>
+            <Dependent Role="RoomTimePrice">
+              <PropertyRef Name="RoomClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HotelOrderModelStoreContainer">
+          <EntitySet Name="Action" EntityType="Self.Action" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ActionDescribe" EntityType="Self.ActionDescribe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Activity" EntityType="Self.Activity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ActivityReference" EntityType="Self.ActivityReference" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Discount" EntityType="Self.Discount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DiscountReference" EntityType="Self.DiscountReference" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelFacilities" EntityType="Self.HotelFacilities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelIndustries" EntityType="Self.HotelIndustries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelRegionName" EntityType="Self.HotelRegionName" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MultipleHotelFacilities" EntityType="Self.MultipleHotelFacilities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MultipleRoomFacilities" EntityType="Self.MultipleRoomFacilities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetailStatus" EntityType="Self.OrderDetailStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderSpecialRequest" EntityType="Self.OrderSpecialRequest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payments" EntityType="Self.Payments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomAdmin" EntityType="Self.RoomAdmin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomClass" EntityType="Self.RoomClass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomFacilities" EntityType="Self.RoomFacilities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomImage" EntityType="Self.RoomImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomMember" EntityType="Self.RoomMember" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomStyle" EntityType="Self.RoomStyle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomTimePrice" EntityType="Self.RoomTimePrice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SpecialRequest" EntityType="Self.SpecialRequest" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ActionDescribe_Action" Association="Self.FK_ActionDescribe_Action">
+            <End Role="Action" EntitySet="Action" />
+            <End Role="ActionDescribe" EntitySet="ActionDescribe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActionDescribe_RoomMember" Association="Self.FK_ActionDescribe_RoomMember">
+            <End Role="RoomMember" EntitySet="RoomMember" />
+            <End Role="ActionDescribe" EntitySet="ActionDescribe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActivityReference_Activity" Association="Self.FK_ActivityReference_Activity">
+            <End Role="Activity" EntitySet="Activity" />
+            <End Role="ActivityReference" EntitySet="ActivityReference" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActivityReference_Orders" Association="Self.FK_ActivityReference_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="ActivityReference" EntitySet="ActivityReference" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_RoomClass" Association="Self.FK_Comments_RoomClass">
+            <End Role="RoomClass" EntitySet="RoomClass" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_RoomMember" Association="Self.FK_Comments_RoomMember">
+            <End Role="RoomMember" EntitySet="RoomMember" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiscountReference_Discount" Association="Self.FK_DiscountReference_Discount">
+            <End Role="Discount" EntitySet="Discount" />
+            <End Role="DiscountReference" EntitySet="DiscountReference" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiscountReference_RoomMember" Association="Self.FK_DiscountReference_RoomMember">
+            <End Role="RoomMember" EntitySet="RoomMember" />
+            <End Role="DiscountReference" EntitySet="DiscountReference" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelIndustries_HotelRegionName" Association="Self.FK_HotelIndustries_HotelRegionName">
+            <End Role="HotelRegionName" EntitySet="HotelRegionName" />
+            <End Role="HotelIndustries" EntitySet="HotelIndustries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MultipleFacilities_Facilities" Association="Self.FK_MultipleFacilities_Facilities">
+            <End Role="RoomFacilities" EntitySet="RoomFacilities" />
+            <End Role="MultipleRoomFacilities" EntitySet="MultipleRoomFacilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MultipleFacilities_Room" Association="Self.FK_MultipleFacilities_Room">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="MultipleRoomFacilities" EntitySet="MultipleRoomFacilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MultipleHotelFacilities_HotelFacilities" Association="Self.FK_MultipleHotelFacilities_HotelFacilities">
+            <End Role="HotelFacilities" EntitySet="HotelFacilities" />
+            <End Role="MultipleHotelFacilities" EntitySet="MultipleHotelFacilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MultipleHotelFacilities_HotelIndustries" Association="Self.FK_MultipleHotelFacilities_HotelIndustries">
+            <End Role="HotelIndustries" EntitySet="HotelIndustries" />
+            <End Role="MultipleHotelFacilities" EntitySet="MultipleHotelFacilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_OrderDetailStatus" Association="Self.FK_OrderDetails_OrderDetailStatus">
+            <End Role="OrderDetailStatus" EntitySet="OrderDetailStatus" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_Orders" Association="Self.FK_OrderDetails_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_Payments" Association="Self.FK_OrderDetails_Payments">
+            <End Role="Payments" EntitySet="Payments" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_RoomMember" Association="Self.FK_Orders_RoomMember">
+            <End Role="RoomMember" EntitySet="RoomMember" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderSpecialRequest_OrderDetails" Association="Self.FK_OrderSpecialRequest_OrderDetails">
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+            <End Role="OrderSpecialRequest" EntitySet="OrderSpecialRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderSpecialRequest_SpecialRequest" Association="Self.FK_OrderSpecialRequest_SpecialRequest">
+            <End Role="SpecialRequest" EntitySet="SpecialRequest" />
+            <End Role="OrderSpecialRequest" EntitySet="OrderSpecialRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Room_HotelIndustries" Association="Self.FK_Room_HotelIndustries">
+            <End Role="HotelIndustries" EntitySet="HotelIndustries" />
+            <End Role="Room" EntitySet="Room" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Room_RoomAdmin" Association="Self.FK_Room_RoomAdmin">
+            <End Role="RoomAdmin" EntitySet="RoomAdmin" />
+            <End Role="Room" EntitySet="Room" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Room_RoomClass" Association="Self.FK_Room_RoomClass">
+            <End Role="RoomClass" EntitySet="RoomClass" />
+            <End Role="Room" EntitySet="Room" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Room_RoomStyle" Association="Self.FK_Room_RoomStyle">
+            <End Role="RoomStyle" EntitySet="RoomStyle" />
+            <End Role="Room" EntitySet="Room" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomImage_Room" Association="Self.FK_RoomImage_Room">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="RoomImage" EntitySet="RoomImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomMember_RoomAdmin" Association="Self.FK_RoomMember_RoomAdmin">
+            <End Role="RoomAdmin" EntitySet="RoomAdmin" />
+            <End Role="RoomMember" EntitySet="RoomMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomTimePrice_RoomClass" Association="Self.FK_RoomTimePrice_RoomClass">
+            <End Role="RoomClass" EntitySet="RoomClass" />
+            <End Role="RoomTimePrice" EntitySet="RoomTimePrice" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HotelOrderModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Action">
+          <Key>
+            <PropertyRef Name="ActionID" />
+          </Key>
+          <Property Name="ActionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActionName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ActionDescript" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ActionDescribe" Relationship="Self.FK_ActionDescribe_Action" FromRole="Action" ToRole="ActionDescribe" />
+        </EntityType>
+        <EntityType Name="ActionDescribe">
+          <Key>
+            <PropertyRef Name="ActionToRoomID" />
+          </Key>
+          <Property Name="ActionToRoomID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ActioID" Type="Int32" />
+          <Property Name="MemberID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Action" Relationship="Self.FK_ActionDescribe_Action" FromRole="ActionDescribe" ToRole="Action" />
+          <NavigationProperty Name="RoomMember" Relationship="Self.FK_ActionDescribe_RoomMember" FromRole="ActionDescribe" ToRole="RoomMember" />
+        </EntityType>
+        <EntityType Name="Activity">
+          <Key>
+            <PropertyRef Name="ActivityID" />
+          </Key>
+          <Property Name="ActivityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActivityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ActivityImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ActivityDirections" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ActivityTime" Type="DateTime" Precision="3" />
+          <Property Name="ActivityPlace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ActivityPeople" Type="Int32" />
+          <Property Name="ActivityCost" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ActivityReference" Relationship="Self.FK_ActivityReference_Activity" FromRole="Activity" ToRole="ActivityReference" />
+        </EntityType>
+        <EntityType Name="ActivityReference">
+          <Key>
+            <PropertyRef Name="ActivityReferenceID" />
+          </Key>
+          <Property Name="ActivityReferenceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActivityID" Type="Int32" Nullable="false" />
+          <Property Name="OrderID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Activity" Relationship="Self.FK_ActivityReference_Activity" FromRole="ActivityReference" ToRole="Activity" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_ActivityReference_Orders" FromRole="ActivityReference" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="CommentId" />
+          </Key>
+          <Property Name="CommentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CommentDate" Type="DateTime" Precision="3" />
+          <Property Name="MemberID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RoomClassID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CommentPoint" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="CommentDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RoomClass" Relationship="Self.FK_Comments_RoomClass" FromRole="Comments" ToRole="RoomClass" />
+          <NavigationProperty Name="RoomMember" Relationship="Self.FK_Comments_RoomMember" FromRole="Comments" ToRole="RoomMember" />
+        </EntityType>
+        <EntityType Name="Discount">
+          <Key>
+            <PropertyRef Name="DiscountID" />
+          </Key>
+          <Property Name="DiscountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DiscountName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DiscountImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DiscountDirections" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiscountStart" Type="DateTime" Precision="3" />
+          <Property Name="DiscountEnd" Type="DateTime" Precision="3" />
+          <Property Name="DiscountDiscount" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="DiscountReference" Relationship="Self.FK_DiscountReference_Discount" FromRole="Discount" ToRole="DiscountReference" />
+        </EntityType>
+        <EntityType Name="DiscountReference">
+          <Key>
+            <PropertyRef Name="DiscountReferenceID" />
+          </Key>
+          <Property Name="DiscountReferenceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DiscountID" Type="Int32" Nullable="false" />
+          <Property Name="MemberID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Activaled" Type="Int32" />
+          <NavigationProperty Name="Discount" Relationship="Self.FK_DiscountReference_Discount" FromRole="DiscountReference" ToRole="Discount" />
+          <NavigationProperty Name="RoomMember" Relationship="Self.FK_DiscountReference_RoomMember" FromRole="DiscountReference" ToRole="RoomMember" />
+        </EntityType>
+        <EntityType Name="HotelFacilities">
+          <Key>
+            <PropertyRef Name="HotelFacilityID" />
+          </Key>
+          <Property Name="HotelFacilityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HotelFacilityName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="HotelFacilityImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="MultipleHotelFacilities" Relationship="Self.FK_MultipleHotelFacilities_HotelFacilities" FromRole="HotelFacilities" ToRole="MultipleHotelFacilities" />
+        </EntityType>
+        <EntityType Name="HotelIndustries">
+          <Key>
+            <PropertyRef Name="HotelID" />
+          </Key>
+          <Property Name="HotelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HotelName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HotelPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="HotelRegionID" Type="Int32" />
+          <Property Name="HotelAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HotelImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="HotelImageDiscription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HotelRegionName" Relationship="Self.FK_HotelIndustries_HotelRegionName" FromRole="HotelIndustries" ToRole="HotelRegionName" />
+          <NavigationProperty Name="MultipleHotelFacilities" Relationship="Self.FK_MultipleHotelFacilities_HotelIndustries" FromRole="HotelIndustries" ToRole="MultipleHotelFacilities" />
+          <NavigationProperty Name="Room" Relationship="Self.FK_Room_HotelIndustries" FromRole="HotelIndustries" ToRole="Room" />
+        </EntityType>
+        <EntityType Name="HotelRegionName">
+          <Key>
+            <PropertyRef Name="HotelRegionID" />
+          </Key>
+          <Property Name="HotelRegionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HotelIndustries" Relationship="Self.FK_HotelIndustries_HotelRegionName" FromRole="HotelRegionName" ToRole="HotelIndustries" />
+        </EntityType>
+        <EntityType Name="MultipleHotelFacilities">
+          <Key>
+            <PropertyRef Name="MultipleHotelFacilityID" />
+          </Key>
+          <Property Name="MultipleHotelFacilityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HotelID" Type="Int32" />
+          <Property Name="HotelFacilityID" Type="Int32" />
+          <NavigationProperty Name="HotelFacilities" Relationship="Self.FK_MultipleHotelFacilities_HotelFacilities" FromRole="MultipleHotelFacilities" ToRole="HotelFacilities" />
+          <NavigationProperty Name="HotelIndustries" Relationship="Self.FK_MultipleHotelFacilities_HotelIndustries" FromRole="MultipleHotelFacilities" ToRole="HotelIndustries" />
+        </EntityType>
+        <EntityType Name="MultipleRoomFacilities">
+          <Key>
+            <PropertyRef Name="MultipleRoomFacilitiesID" />
+          </Key>
+          <Property Name="MultipleRoomFacilitiesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RoomFacilityID" Type="Int32" />
+          <NavigationProperty Name="RoomFacilities" Relationship="Self.FK_MultipleFacilities_Facilities" FromRole="MultipleRoomFacilities" ToRole="RoomFacilities" />
+          <NavigationProperty Name="Room" Relationship="Self.FK_MultipleFacilities_Room" FromRole="MultipleRoomFacilities" ToRole="Room" />
+        </EntityType>
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="OrderDetailID" />
+          </Key>
+          <Property Name="OrderDetailID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OrderID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MoveInDate" Type="DateTime" Precision="3" />
+          <Property Name="MoveOutDate" Type="DateTime" Precision="3" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="PaymentID" Type="Int32" />
+          <Property Name="PaymentPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OrderDetailStatusID" Type="Int32" />
+          <Property Name="RoomID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="OrderDetailRemark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OrderDetailStatus" Relationship="Self.FK_OrderDetails_OrderDetailStatus" FromRole="OrderDetails" ToRole="OrderDetailStatus" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_OrderDetails_Orders" FromRole="OrderDetails" ToRole="Orders" />
+          <NavigationProperty Name="Payments" Relationship="Self.FK_OrderDetails_Payments" FromRole="OrderDetails" ToRole="Payments" />
+          <NavigationProperty Name="OrderSpecialRequest" Relationship="Self.FK_OrderSpecialRequest_OrderDetails" FromRole="OrderDetails" ToRole="OrderSpecialRequest" />
+        </EntityType>
+        <EntityType Name="OrderDetailStatus">
+          <Key>
+            <PropertyRef Name="OrderDetailStatusID" />
+          </Key>
+          <Property Name="OrderDetailStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderDetaiStatusContent" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_OrderDetailStatus" FromRole="OrderDetailStatus" ToRole="OrderDetails" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MemberID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
+          <Property Name="OrderTotalPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CheckInPeople" Type="Int32" />
+          <Property Name="OrderRemark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrderClosed" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ActivityReference" Relationship="Self.FK_ActivityReference_Orders" FromRole="Orders" ToRole="ActivityReference" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Orders" FromRole="Orders" ToRole="OrderDetails" />
+          <NavigationProperty Name="RoomMember" Relationship="Self.FK_Orders_RoomMember" FromRole="Orders" ToRole="RoomMember" />
+        </EntityType>
+        <EntityType Name="OrderSpecialRequest">
+          <Key>
+            <PropertyRef Name="OrderSpecialRequestID" />
+          </Key>
+          <Property Name="OrderSpecialRequestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderDetailID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SpecialRequestID" Type="Int32" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderSpecialRequest_OrderDetails" FromRole="OrderSpecialRequest" ToRole="OrderDetails" />
+          <NavigationProperty Name="SpecialRequest" Relationship="Self.FK_OrderSpecialRequest_SpecialRequest" FromRole="OrderSpecialRequest" ToRole="SpecialRequest" />
+        </EntityType>
+        <EntityType Name="Payments">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Payments1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Payments" FromRole="Payments" ToRole="OrderDetails" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="RoomID" />
+          </Key>
+          <Property Name="RoomID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoomClassID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RoomSize" Type="Int32" />
+          <Property Name="RoomPeople" Type="Int32" />
+          <Property Name="RoomStyleID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="HotelID" Type="Int32" />
+          <Property Name="RoomStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AdminID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="favorite" Type="Int32" />
+          <NavigationProperty Name="HotelIndustries" Relationship="Self.FK_Room_HotelIndustries" FromRole="Room" ToRole="HotelIndustries" />
+          <NavigationProperty Name="MultipleRoomFacilities" Relationship="Self.FK_MultipleFacilities_Room" FromRole="Room" ToRole="MultipleRoomFacilities" />
+          <NavigationProperty Name="RoomAdmin" Relationship="Self.FK_Room_RoomAdmin" FromRole="Room" ToRole="RoomAdmin" />
+          <NavigationProperty Name="RoomClass" Relationship="Self.FK_Room_RoomClass" FromRole="Room" ToRole="RoomClass" />
+          <NavigationProperty Name="RoomStyle" Relationship="Self.FK_Room_RoomStyle" FromRole="Room" ToRole="RoomStyle" />
+          <NavigationProperty Name="RoomImage" Relationship="Self.FK_RoomImage_Room" FromRole="Room" ToRole="RoomImage" />
+        </EntityType>
+        <EntityType Name="RoomAdmin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdminName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AdminPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Room" Relationship="Self.FK_Room_RoomAdmin" FromRole="RoomAdmin" ToRole="Room" />
+          <NavigationProperty Name="RoomMember" Relationship="Self.FK_RoomMember_RoomAdmin" FromRole="RoomAdmin" ToRole="RoomMember" />
+        </EntityType>
+        <EntityType Name="RoomClass">
+          <Key>
+            <PropertyRef Name="RoomClassID" />
+          </Key>
+          <Property Name="RoomClassID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoomClassName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RoomClassDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_RoomClass" FromRole="RoomClass" ToRole="Comments" />
+          <NavigationProperty Name="Room" Relationship="Self.FK_Room_RoomClass" FromRole="RoomClass" ToRole="Room" />
+          <NavigationProperty Name="RoomTimePrice" Relationship="Self.FK_RoomTimePrice_RoomClass" FromRole="RoomClass" ToRole="RoomTimePrice" />
+        </EntityType>
+        <EntityType Name="RoomFacilities">
+          <Key>
+            <PropertyRef Name="RoomFacilityID" />
+          </Key>
+          <Property Name="RoomFacilityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomFacilityName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RoomFacilityImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="MultipleRoomFacilities" Relationship="Self.FK_MultipleFacilities_Facilities" FromRole="RoomFacilities" ToRole="MultipleRoomFacilities" />
+        </EntityType>
+        <EntityType Name="RoomImage">
+          <Key>
+            <PropertyRef Name="RoomImagesID" />
+          </Key>
+          <Property Name="RoomImagesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomImageName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RoomID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RoomImage1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="RoomImageDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Room" Relationship="Self.FK_RoomImage_Room" FromRole="RoomImage" ToRole="Room" />
+        </EntityType>
+        <EntityType Name="RoomMember">
+          <Key>
+            <PropertyRef Name="MemberID" />
+          </Key>
+          <Property Name="AdminID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MemberID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MemberName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MemberBirthday" Type="DateTime" Precision="0" />
+          <Property Name="MemberGender" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="MemberIdentity" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MemberPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MemberEMail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MemberPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="MemberPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ActionDescribe" Relationship="Self.FK_ActionDescribe_RoomMember" FromRole="RoomMember" ToRole="ActionDescribe" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_RoomMember" FromRole="RoomMember" ToRole="Comments" />
+          <NavigationProperty Name="DiscountReference" Relationship="Self.FK_DiscountReference_RoomMember" FromRole="RoomMember" ToRole="DiscountReference" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_RoomMember" FromRole="RoomMember" ToRole="Orders" />
+          <NavigationProperty Name="RoomAdmin" Relationship="Self.FK_RoomMember_RoomAdmin" FromRole="RoomMember" ToRole="RoomAdmin" />
+        </EntityType>
+        <EntityType Name="RoomStyle">
+          <Key>
+            <PropertyRef Name="RoomStyleID" />
+          </Key>
+          <Property Name="RoomStyleID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoomStyleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RoomStyleDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Room" Relationship="Self.FK_Room_RoomStyle" FromRole="RoomStyle" ToRole="Room" />
+        </EntityType>
+        <EntityType Name="RoomTimePrice">
+          <Key>
+            <PropertyRef Name="TimePriceID" />
+          </Key>
+          <Property Name="TimePriceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomClassID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WeekdayPrice" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="HolidayPrice" Type="Decimal" Precision="10" Scale="0" />
+          <NavigationProperty Name="RoomClass" Relationship="Self.FK_RoomTimePrice_RoomClass" FromRole="RoomTimePrice" ToRole="RoomClass" />
+        </EntityType>
+        <EntityType Name="SpecialRequest">
+          <Key>
+            <PropertyRef Name="SpecialRequestID" />
+          </Key>
+          <Property Name="SpecialRequestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SpecialRequestName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OrderSpecialRequest" Relationship="Self.FK_OrderSpecialRequest_SpecialRequest" FromRole="SpecialRequest" ToRole="OrderSpecialRequest" />
+        </EntityType>
+        <Association Name="FK_ActionDescribe_Action">
+          <End Role="Action" Type="Self.Action" Multiplicity="0..1" />
+          <End Role="ActionDescribe" Type="Self.ActionDescribe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Action">
+              <PropertyRef Name="ActionID" />
+            </Principal>
+            <Dependent Role="ActionDescribe">
+              <PropertyRef Name="ActioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActionDescribe_RoomMember">
+          <End Role="RoomMember" Type="Self.RoomMember" Multiplicity="0..1" />
+          <End Role="ActionDescribe" Type="Self.ActionDescribe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomMember">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="ActionDescribe">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActivityReference_Activity">
+          <End Role="Activity" Type="Self.Activity" Multiplicity="1" />
+          <End Role="ActivityReference" Type="Self.ActivityReference" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activity">
+              <PropertyRef Name="ActivityID" />
+            </Principal>
+            <Dependent Role="ActivityReference">
+              <PropertyRef Name="ActivityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActivityReference_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="ActivityReference" Type="Self.ActivityReference" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="ActivityReference">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_RoomClass">
+          <End Role="RoomClass" Type="Self.RoomClass" Multiplicity="0..1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomClass">
+              <PropertyRef Name="RoomClassID" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="RoomClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_RoomMember">
+          <End Role="RoomMember" Type="Self.RoomMember" Multiplicity="0..1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomMember">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiscountReference_Discount">
+          <End Role="Discount" Type="Self.Discount" Multiplicity="1" />
+          <End Role="DiscountReference" Type="Self.DiscountReference" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Discount">
+              <PropertyRef Name="DiscountID" />
+            </Principal>
+            <Dependent Role="DiscountReference">
+              <PropertyRef Name="DiscountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiscountReference_RoomMember">
+          <End Role="RoomMember" Type="Self.RoomMember" Multiplicity="0..1" />
+          <End Role="DiscountReference" Type="Self.DiscountReference" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomMember">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="DiscountReference">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MultipleHotelFacilities_HotelFacilities">
+          <End Role="HotelFacilities" Type="Self.HotelFacilities" Multiplicity="0..1" />
+          <End Role="MultipleHotelFacilities" Type="Self.MultipleHotelFacilities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelFacilities">
+              <PropertyRef Name="HotelFacilityID" />
+            </Principal>
+            <Dependent Role="MultipleHotelFacilities">
+              <PropertyRef Name="HotelFacilityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelIndustries_HotelRegionName">
+          <End Role="HotelRegionName" Type="Self.HotelRegionName" Multiplicity="0..1" />
+          <End Role="HotelIndustries" Type="Self.HotelIndustries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelRegionName">
+              <PropertyRef Name="HotelRegionID" />
+            </Principal>
+            <Dependent Role="HotelIndustries">
+              <PropertyRef Name="HotelRegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MultipleHotelFacilities_HotelIndustries">
+          <End Role="HotelIndustries" Type="Self.HotelIndustries" Multiplicity="0..1" />
+          <End Role="MultipleHotelFacilities" Type="Self.MultipleHotelFacilities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelIndustries">
+              <PropertyRef Name="HotelID" />
+            </Principal>
+            <Dependent Role="MultipleHotelFacilities">
+              <PropertyRef Name="HotelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Room_HotelIndustries">
+          <End Role="HotelIndustries" Type="Self.HotelIndustries" Multiplicity="0..1" />
+          <End Role="Room" Type="Self.Room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelIndustries">
+              <PropertyRef Name="HotelID" />
+            </Principal>
+            <Dependent Role="Room">
+              <PropertyRef Name="HotelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MultipleFacilities_Facilities">
+          <End Role="RoomFacilities" Type="Self.RoomFacilities" Multiplicity="0..1" />
+          <End Role="MultipleRoomFacilities" Type="Self.MultipleRoomFacilities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomFacilities">
+              <PropertyRef Name="RoomFacilityID" />
+            </Principal>
+            <Dependent Role="MultipleRoomFacilities">
+              <PropertyRef Name="RoomFacilityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MultipleFacilities_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+          <End Role="MultipleRoomFacilities" Type="Self.MultipleRoomFacilities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="RoomID" />
+            </Principal>
+            <Dependent Role="MultipleRoomFacilities">
+              <PropertyRef Name="RoomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_OrderDetailStatus">
+          <End Role="OrderDetailStatus" Type="Self.OrderDetailStatus" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderDetailStatus">
+              <PropertyRef Name="OrderDetailStatusID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="OrderDetailStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_Payments">
+          <End Role="Payments" Type="Self.Payments" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payments">
+              <PropertyRef Name="PaymentID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="PaymentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderSpecialRequest_OrderDetails">
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="0..1" />
+          <End Role="OrderSpecialRequest" Type="Self.OrderSpecialRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderDetails">
+              <PropertyRef Name="OrderDetailID" />
+            </Principal>
+            <Dependent Role="OrderSpecialRequest">
+              <PropertyRef Name="OrderDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_RoomMember">
+          <End Role="RoomMember" Type="Self.RoomMember" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomMember">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderSpecialRequest_SpecialRequest">
+          <End Role="SpecialRequest" Type="Self.SpecialRequest" Multiplicity="0..1" />
+          <End Role="OrderSpecialRequest" Type="Self.OrderSpecialRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SpecialRequest">
+              <PropertyRef Name="SpecialRequestID" />
+            </Principal>
+            <Dependent Role="OrderSpecialRequest">
+              <PropertyRef Name="SpecialRequestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Room_RoomAdmin">
+          <End Role="RoomAdmin" Type="Self.RoomAdmin" Multiplicity="0..1" />
+          <End Role="Room" Type="Self.Room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomAdmin">
+              <PropertyRef Name="AdminID" />
+            </Principal>
+            <Dependent Role="Room">
+              <PropertyRef Name="AdminID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Room_RoomClass">
+          <End Role="RoomClass" Type="Self.RoomClass" Multiplicity="0..1" />
+          <End Role="Room" Type="Self.Room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomClass">
+              <PropertyRef Name="RoomClassID" />
+            </Principal>
+            <Dependent Role="Room">
+              <PropertyRef Name="RoomClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Room_RoomStyle">
+          <End Role="RoomStyle" Type="Self.RoomStyle" Multiplicity="0..1" />
+          <End Role="Room" Type="Self.Room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomStyle">
+              <PropertyRef Name="RoomStyleID" />
+            </Principal>
+            <Dependent Role="Room">
+              <PropertyRef Name="RoomStyleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomImage_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+          <End Role="RoomImage" Type="Self.RoomImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="RoomID" />
+            </Principal>
+            <Dependent Role="RoomImage">
+              <PropertyRef Name="RoomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomMember_RoomAdmin">
+          <End Role="RoomAdmin" Type="Self.RoomAdmin" Multiplicity="1" />
+          <End Role="RoomMember" Type="Self.RoomMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomAdmin">
+              <PropertyRef Name="AdminID" />
+            </Principal>
+            <Dependent Role="RoomMember">
+              <PropertyRef Name="AdminID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomTimePrice_RoomClass">
+          <End Role="RoomClass" Type="Self.RoomClass" Multiplicity="0..1" />
+          <End Role="RoomTimePrice" Type="Self.RoomTimePrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomClass">
+              <PropertyRef Name="RoomClassID" />
+            </Principal>
+            <Dependent Role="RoomTimePrice">
+              <PropertyRef Name="RoomClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HotelOrderEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Action" EntityType="Self.Action" />
+          <EntitySet Name="ActionDescribe" EntityType="Self.ActionDescribe" />
+          <EntitySet Name="Activity" EntityType="Self.Activity" />
+          <EntitySet Name="ActivityReference" EntityType="Self.ActivityReference" />
+          <EntitySet Name="Comments" EntityType="Self.Comments" />
+          <EntitySet Name="Discount" EntityType="Self.Discount" />
+          <EntitySet Name="DiscountReference" EntityType="Self.DiscountReference" />
+          <EntitySet Name="HotelFacilities" EntityType="Self.HotelFacilities" />
+          <EntitySet Name="HotelIndustries" EntityType="Self.HotelIndustries" />
+          <EntitySet Name="HotelRegionName" EntityType="Self.HotelRegionName" />
+          <EntitySet Name="MultipleHotelFacilities" EntityType="Self.MultipleHotelFacilities" />
+          <EntitySet Name="MultipleRoomFacilities" EntityType="Self.MultipleRoomFacilities" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" />
+          <EntitySet Name="OrderDetailStatus" EntityType="Self.OrderDetailStatus" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" />
+          <EntitySet Name="OrderSpecialRequest" EntityType="Self.OrderSpecialRequest" />
+          <EntitySet Name="Payments" EntityType="Self.Payments" />
+          <EntitySet Name="Room" EntityType="Self.Room" />
+          <EntitySet Name="RoomAdmin" EntityType="Self.RoomAdmin" />
+          <EntitySet Name="RoomClass" EntityType="Self.RoomClass" />
+          <EntitySet Name="RoomFacilities" EntityType="Self.RoomFacilities" />
+          <EntitySet Name="RoomImage" EntityType="Self.RoomImage" />
+          <EntitySet Name="RoomMember" EntityType="Self.RoomMember" />
+          <EntitySet Name="RoomStyle" EntityType="Self.RoomStyle" />
+          <EntitySet Name="RoomTimePrice" EntityType="Self.RoomTimePrice" />
+          <EntitySet Name="SpecialRequest" EntityType="Self.SpecialRequest" />
+          <AssociationSet Name="FK_ActionDescribe_Action" Association="Self.FK_ActionDescribe_Action">
+            <End Role="Action" EntitySet="Action" />
+            <End Role="ActionDescribe" EntitySet="ActionDescribe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActionDescribe_RoomMember" Association="Self.FK_ActionDescribe_RoomMember">
+            <End Role="RoomMember" EntitySet="RoomMember" />
+            <End Role="ActionDescribe" EntitySet="ActionDescribe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActivityReference_Activity" Association="Self.FK_ActivityReference_Activity">
+            <End Role="Activity" EntitySet="Activity" />
+            <End Role="ActivityReference" EntitySet="ActivityReference" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActivityReference_Orders" Association="Self.FK_ActivityReference_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="ActivityReference" EntitySet="ActivityReference" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_RoomClass" Association="Self.FK_Comments_RoomClass">
+            <End Role="RoomClass" EntitySet="RoomClass" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_RoomMember" Association="Self.FK_Comments_RoomMember">
+            <End Role="RoomMember" EntitySet="RoomMember" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiscountReference_Discount" Association="Self.FK_DiscountReference_Discount">
+            <End Role="Discount" EntitySet="Discount" />
+            <End Role="DiscountReference" EntitySet="DiscountReference" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiscountReference_RoomMember" Association="Self.FK_DiscountReference_RoomMember">
+            <End Role="RoomMember" EntitySet="RoomMember" />
+            <End Role="DiscountReference" EntitySet="DiscountReference" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MultipleHotelFacilities_HotelFacilities" Association="Self.FK_MultipleHotelFacilities_HotelFacilities">
+            <End Role="HotelFacilities" EntitySet="HotelFacilities" />
+            <End Role="MultipleHotelFacilities" EntitySet="MultipleHotelFacilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelIndustries_HotelRegionName" Association="Self.FK_HotelIndustries_HotelRegionName">
+            <End Role="HotelRegionName" EntitySet="HotelRegionName" />
+            <End Role="HotelIndustries" EntitySet="HotelIndustries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MultipleHotelFacilities_HotelIndustries" Association="Self.FK_MultipleHotelFacilities_HotelIndustries">
+            <End Role="HotelIndustries" EntitySet="HotelIndustries" />
+            <End Role="MultipleHotelFacilities" EntitySet="MultipleHotelFacilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Room_HotelIndustries" Association="Self.FK_Room_HotelIndustries">
+            <End Role="HotelIndustries" EntitySet="HotelIndustries" />
+            <End Role="Room" EntitySet="Room" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MultipleFacilities_Facilities" Association="Self.FK_MultipleFacilities_Facilities">
+            <End Role="RoomFacilities" EntitySet="RoomFacilities" />
+            <End Role="MultipleRoomFacilities" EntitySet="MultipleRoomFacilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MultipleFacilities_Room" Association="Self.FK_MultipleFacilities_Room">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="MultipleRoomFacilities" EntitySet="MultipleRoomFacilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_OrderDetailStatus" Association="Self.FK_OrderDetails_OrderDetailStatus">
+            <End Role="OrderDetailStatus" EntitySet="OrderDetailStatus" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_Orders" Association="Self.FK_OrderDetails_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_Payments" Association="Self.FK_OrderDetails_Payments">
+            <End Role="Payments" EntitySet="Payments" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderSpecialRequest_OrderDetails" Association="Self.FK_OrderSpecialRequest_OrderDetails">
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+            <End Role="OrderSpecialRequest" EntitySet="OrderSpecialRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_RoomMember" Association="Self.FK_Orders_RoomMember">
+            <End Role="RoomMember" EntitySet="RoomMember" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderSpecialRequest_SpecialRequest" Association="Self.FK_OrderSpecialRequest_SpecialRequest">
+            <End Role="SpecialRequest" EntitySet="SpecialRequest" />
+            <End Role="OrderSpecialRequest" EntitySet="OrderSpecialRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Room_RoomAdmin" Association="Self.FK_Room_RoomAdmin">
+            <End Role="RoomAdmin" EntitySet="RoomAdmin" />
+            <End Role="Room" EntitySet="Room" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Room_RoomClass" Association="Self.FK_Room_RoomClass">
+            <End Role="RoomClass" EntitySet="RoomClass" />
+            <End Role="Room" EntitySet="Room" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Room_RoomStyle" Association="Self.FK_Room_RoomStyle">
+            <End Role="RoomStyle" EntitySet="RoomStyle" />
+            <End Role="Room" EntitySet="Room" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomImage_Room" Association="Self.FK_RoomImage_Room">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="RoomImage" EntitySet="RoomImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomMember_RoomAdmin" Association="Self.FK_RoomMember_RoomAdmin">
+            <End Role="RoomAdmin" EntitySet="RoomAdmin" />
+            <End Role="RoomMember" EntitySet="RoomMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomTimePrice_RoomClass" Association="Self.FK_RoomTimePrice_RoomClass">
+            <End Role="RoomClass" EntitySet="RoomClass" />
+            <End Role="RoomTimePrice" EntitySet="RoomTimePrice" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HotelOrderModelStoreContainer" CdmEntityContainer="HotelOrderEntities">
+          <EntitySetMapping Name="Action">
+            <EntityTypeMapping TypeName="HotelOrderModel.Action">
+              <MappingFragment StoreEntitySet="Action">
+                <ScalarProperty Name="ActionID" ColumnName="ActionID" />
+                <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+                <ScalarProperty Name="ActionDescript" ColumnName="ActionDescript" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActionDescribe">
+            <EntityTypeMapping TypeName="HotelOrderModel.ActionDescribe">
+              <MappingFragment StoreEntitySet="ActionDescribe">
+                <ScalarProperty Name="ActionToRoomID" ColumnName="ActionToRoomID" />
+                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+                <ScalarProperty Name="ActioID" ColumnName="ActioID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Activity">
+            <EntityTypeMapping TypeName="HotelOrderModel.Activity">
+              <MappingFragment StoreEntitySet="Activity">
+                <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+                <ScalarProperty Name="ActivityName" ColumnName="ActivityName" />
+                <ScalarProperty Name="ActivityImage" ColumnName="ActivityImage" />
+                <ScalarProperty Name="ActivityDirections" ColumnName="ActivityDirections" />
+                <ScalarProperty Name="ActivityTime" ColumnName="ActivityTime" />
+                <ScalarProperty Name="ActivityPlace" ColumnName="ActivityPlace" />
+                <ScalarProperty Name="ActivityPeople" ColumnName="ActivityPeople" />
+                <ScalarProperty Name="ActivityCost" ColumnName="ActivityCost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivityReference">
+            <EntityTypeMapping TypeName="HotelOrderModel.ActivityReference">
+              <MappingFragment StoreEntitySet="ActivityReference">
+                <ScalarProperty Name="ActivityReferenceID" ColumnName="ActivityReferenceID" />
+                <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="HotelOrderModel.Comments">
+              <MappingFragment StoreEntitySet="Comments">
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+                <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="RoomClassID" ColumnName="RoomClassID" />
+                <ScalarProperty Name="CommentPoint" ColumnName="CommentPoint" />
+                <ScalarProperty Name="CommentDetail" ColumnName="CommentDetail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Discount">
+            <EntityTypeMapping TypeName="HotelOrderModel.Discount">
+              <MappingFragment StoreEntitySet="Discount">
+                <ScalarProperty Name="DiscountID" ColumnName="DiscountID" />
+                <ScalarProperty Name="DiscountName" ColumnName="DiscountName" />
+                <ScalarProperty Name="DiscountImage" ColumnName="DiscountImage" />
+                <ScalarProperty Name="DiscountDirections" ColumnName="DiscountDirections" />
+                <ScalarProperty Name="DiscountStart" ColumnName="DiscountStart" />
+                <ScalarProperty Name="DiscountEnd" ColumnName="DiscountEnd" />
+                <ScalarProperty Name="DiscountDiscount" ColumnName="DiscountDiscount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DiscountReference">
+            <EntityTypeMapping TypeName="HotelOrderModel.DiscountReference">
+              <MappingFragment StoreEntitySet="DiscountReference">
+                <ScalarProperty Name="DiscountReferenceID" ColumnName="DiscountReferenceID" />
+                <ScalarProperty Name="DiscountID" ColumnName="DiscountID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="Activaled" ColumnName="Activaled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelFacilities">
+            <EntityTypeMapping TypeName="HotelOrderModel.HotelFacilities">
+              <MappingFragment StoreEntitySet="HotelFacilities">
+                <ScalarProperty Name="HotelFacilityID" ColumnName="HotelFacilityID" />
+                <ScalarProperty Name="HotelFacilityName" ColumnName="HotelFacilityName" />
+                <ScalarProperty Name="HotelFacilityImage" ColumnName="HotelFacilityImage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelIndustries">
+            <EntityTypeMapping TypeName="HotelOrderModel.HotelIndustries">
+              <MappingFragment StoreEntitySet="HotelIndustries">
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+                <ScalarProperty Name="HotelName" ColumnName="HotelName" />
+                <ScalarProperty Name="HotelPhone" ColumnName="HotelPhone" />
+                <ScalarProperty Name="HotelRegionID" ColumnName="HotelRegionID" />
+                <ScalarProperty Name="HotelAddress" ColumnName="HotelAddress" />
+                <ScalarProperty Name="HotelImage" ColumnName="HotelImage" />
+                <ScalarProperty Name="HotelImageDiscription" ColumnName="HotelImageDiscription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelRegionName">
+            <EntityTypeMapping TypeName="HotelOrderModel.HotelRegionName">
+              <MappingFragment StoreEntitySet="HotelRegionName">
+                <ScalarProperty Name="HotelRegionID" ColumnName="HotelRegionID" />
+                <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MultipleHotelFacilities">
+            <EntityTypeMapping TypeName="HotelOrderModel.MultipleHotelFacilities">
+              <MappingFragment StoreEntitySet="MultipleHotelFacilities">
+                <ScalarProperty Name="MultipleHotelFacilityID" ColumnName="MultipleHotelFacilityID" />
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+                <ScalarProperty Name="HotelFacilityID" ColumnName="HotelFacilityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MultipleRoomFacilities">
+            <EntityTypeMapping TypeName="HotelOrderModel.MultipleRoomFacilities">
+              <MappingFragment StoreEntitySet="MultipleRoomFacilities">
+                <ScalarProperty Name="MultipleRoomFacilitiesID" ColumnName="MultipleRoomFacilitiesID" />
+                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+                <ScalarProperty Name="RoomFacilityID" ColumnName="RoomFacilityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="HotelOrderModel.OrderDetails">
+              <MappingFragment StoreEntitySet="OrderDetails">
+                <ScalarProperty Name="OrderDetailID" ColumnName="OrderDetailID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="MoveInDate" ColumnName="MoveInDate" />
+                <ScalarProperty Name="MoveOutDate" ColumnName="MoveOutDate" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+                <ScalarProperty Name="PaymentPrice" ColumnName="PaymentPrice" />
+                <ScalarProperty Name="OrderDetailStatusID" ColumnName="OrderDetailStatusID" />
+                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+                <ScalarProperty Name="OrderDetailRemark" ColumnName="OrderDetailRemark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetailStatus">
+            <EntityTypeMapping TypeName="HotelOrderModel.OrderDetailStatus">
+              <MappingFragment StoreEntitySet="OrderDetailStatus">
+                <ScalarProperty Name="OrderDetailStatusID" ColumnName="OrderDetailStatusID" />
+                <ScalarProperty Name="OrderDetaiStatusContent" ColumnName="OrderDetaiStatusContent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="HotelOrderModel.Orders">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="OrderTotalPrice" ColumnName="OrderTotalPrice" />
+                <ScalarProperty Name="CheckInPeople" ColumnName="CheckInPeople" />
+                <ScalarProperty Name="OrderRemark" ColumnName="OrderRemark" />
+                <ScalarProperty Name="OrderClosed" ColumnName="OrderClosed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderSpecialRequest">
+            <EntityTypeMapping TypeName="HotelOrderModel.OrderSpecialRequest">
+              <MappingFragment StoreEntitySet="OrderSpecialRequest">
+                <ScalarProperty Name="OrderSpecialRequestID" ColumnName="OrderSpecialRequestID" />
+                <ScalarProperty Name="OrderDetailID" ColumnName="OrderDetailID" />
+                <ScalarProperty Name="SpecialRequestID" ColumnName="SpecialRequestID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="HotelOrderModel.Payments">
+              <MappingFragment StoreEntitySet="Payments">
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+                <ScalarProperty Name="Payments1" ColumnName="Payments" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Room">
+            <EntityTypeMapping TypeName="HotelOrderModel.Room">
+              <MappingFragment StoreEntitySet="Room">
+                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+                <ScalarProperty Name="RoomClassID" ColumnName="RoomClassID" />
+                <ScalarProperty Name="RoomSize" ColumnName="RoomSize" />
+                <ScalarProperty Name="RoomPeople" ColumnName="RoomPeople" />
+                <ScalarProperty Name="RoomStyleID" ColumnName="RoomStyleID" />
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+                <ScalarProperty Name="RoomStatus" ColumnName="RoomStatus" />
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+                <ScalarProperty Name="favorite" ColumnName="favorite" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomAdmin">
+            <EntityTypeMapping TypeName="HotelOrderModel.RoomAdmin">
+              <MappingFragment StoreEntitySet="RoomAdmin">
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+                <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+                <ScalarProperty Name="AdminPassword" ColumnName="AdminPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomClass">
+            <EntityTypeMapping TypeName="HotelOrderModel.RoomClass">
+              <MappingFragment StoreEntitySet="RoomClass">
+                <ScalarProperty Name="RoomClassID" ColumnName="RoomClassID" />
+                <ScalarProperty Name="RoomClassName" ColumnName="RoomClassName" />
+                <ScalarProperty Name="RoomClassDetail" ColumnName="RoomClassDetail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomFacilities">
+            <EntityTypeMapping TypeName="HotelOrderModel.RoomFacilities">
+              <MappingFragment StoreEntitySet="RoomFacilities">
+                <ScalarProperty Name="RoomFacilityID" ColumnName="RoomFacilityID" />
+                <ScalarProperty Name="RoomFacilityName" ColumnName="RoomFacilityName" />
+                <ScalarProperty Name="RoomFacilityImage" ColumnName="RoomFacilityImage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomImage">
+            <EntityTypeMapping TypeName="HotelOrderModel.RoomImage">
+              <MappingFragment StoreEntitySet="RoomImage">
+                <ScalarProperty Name="RoomImagesID" ColumnName="RoomImagesID" />
+                <ScalarProperty Name="RoomImageName" ColumnName="RoomImageName" />
+                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+                <ScalarProperty Name="RoomImage1" ColumnName="RoomImage" />
+                <ScalarProperty Name="RoomImageDetail" ColumnName="RoomImageDetail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomMember">
+            <EntityTypeMapping TypeName="HotelOrderModel.RoomMember">
+              <MappingFragment StoreEntitySet="RoomMember">
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="MemberName" ColumnName="MemberName" />
+                <ScalarProperty Name="MemberBirthday" ColumnName="MemberBirthday" />
+                <ScalarProperty Name="MemberGender" ColumnName="MemberGender" />
+                <ScalarProperty Name="MemberIdentity" ColumnName="MemberIdentity" />
+                <ScalarProperty Name="MemberPhone" ColumnName="MemberPhone" />
+                <ScalarProperty Name="MemberEMail" ColumnName="MemberEMail" />
+                <ScalarProperty Name="MemberPhoto" ColumnName="MemberPhoto" />
+                <ScalarProperty Name="MemberPassword" ColumnName="MemberPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomStyle">
+            <EntityTypeMapping TypeName="HotelOrderModel.RoomStyle">
+              <MappingFragment StoreEntitySet="RoomStyle">
+                <ScalarProperty Name="RoomStyleID" ColumnName="RoomStyleID" />
+                <ScalarProperty Name="RoomStyleName" ColumnName="RoomStyleName" />
+                <ScalarProperty Name="RoomStyleDetail" ColumnName="RoomStyleDetail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomTimePrice">
+            <EntityTypeMapping TypeName="HotelOrderModel.RoomTimePrice">
+              <MappingFragment StoreEntitySet="RoomTimePrice">
+                <ScalarProperty Name="TimePriceID" ColumnName="TimePriceID" />
+                <ScalarProperty Name="RoomClassID" ColumnName="RoomClassID" />
+                <ScalarProperty Name="WeekdayPrice" ColumnName="WeekdayPrice" />
+                <ScalarProperty Name="HolidayPrice" ColumnName="HolidayPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SpecialRequest">
+            <EntityTypeMapping TypeName="HotelOrderModel.SpecialRequest">
+              <MappingFragment StoreEntitySet="SpecialRequest">
+                <ScalarProperty Name="SpecialRequestID" ColumnName="SpecialRequestID" />
+                <ScalarProperty Name="SpecialRequestName" ColumnName="SpecialRequestName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
