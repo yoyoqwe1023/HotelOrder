@@ -123,8 +123,12 @@
     <Compile Include="App_Start\BundleConfig2.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+
+    <Compile Include="Controllers\CustomerController.cs" />
+
     <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\DiscountController.cs" />
+
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Global.asax.cs">
@@ -326,8 +330,12 @@
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
     <Folder Include="Models\" />
+
+    <Folder Include="Views\Customer\" />
+
     <Folder Include="Views\Activity\" />
     <Folder Include="Views\Discount\" />
+
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
