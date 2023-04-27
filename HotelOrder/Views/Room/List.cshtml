@@ -33,7 +33,7 @@
             @Html.DisplayNameFor(model => model.RoomStyleID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.HotelID)
+            分店 @Html.DisplayNameFor(model => model.HotelID)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.RoomStatus)
@@ -50,7 +50,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.RoomClassID)
+            @Html.DisplayFor(modelItem => item.RoomClass.RoomClassName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.RoomSize)
@@ -59,10 +59,10 @@
             @Html.DisplayFor(modelItem => item.RoomPeople)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.RoomStyleID)
+            @Html.DisplayFor(modelItem => item.RoomStyle.RoomStyleName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.HotelID)
+            @Html.DisplayFor(modelItem => item.HotelIndustries.HotelName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.RoomStatus)
