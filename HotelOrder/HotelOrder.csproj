@@ -46,7 +46,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
@@ -118,10 +120,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\BundleConfig2.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+
     <Compile Include="Controllers\CustomerController.cs" />
+
+    <Compile Include="Controllers\ActivityController.cs" />
+    <Compile Include="Controllers\DiscountController.cs" />
+
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -315,11 +324,18 @@
     <Content Include="Scripts\vendors\linericon\fonts\Linearicons-Free.ttf" />
     <Content Include="Scripts\vendors\linericon\fonts\Linearicons-Free.woff" />
     <Content Include="Scripts\vendors\linericon\fonts\Linearicons-Free.woff2" />
+    <Content Include="Views\Order\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Data\" />
     <Folder Include="Models\" />
+
     <Folder Include="Views\Customer\" />
+
+    <Folder Include="Views\Activity\" />
+    <Folder Include="Views\Discount\" />
+
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
