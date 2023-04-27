@@ -9,7 +9,7 @@ namespace HotelOrder.Controllers
     public class ActivityController : Controller
     {
         // GET: Activity
-        public ActionResult Index()
+        public ActionResult List()
         {
             return View();
         }
