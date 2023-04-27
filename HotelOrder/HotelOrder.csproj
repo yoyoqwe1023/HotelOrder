@@ -145,6 +145,7 @@
     </Compile>
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="dbHotel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -435,6 +436,7 @@
     <Content Include="Scripts\vendors\linericon\fonts\Linearicons-Free.woff2" />
     <Content Include="Views\Comment\List.cshtml" />
     <Content Include="Views\Comment\Create.cshtml" />
+    <Content Include="Views\Room\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

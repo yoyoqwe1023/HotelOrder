@@ -13,6 +13,9 @@
     @Styles.Render("~/Content/css/font-awesome.min.css")
     @Styles.Render("~/Content/css/style.css")
     @Styles.Render("~/Content/css/responsive.css")
+    @Styles.Render("~/Scripts/vendors/owl-carousel/owl.carousel.min.css")
+    @Styles.Render("~/Scripts/vendors/nice-select/css/nice-select.css")
+    @Styles.Render("~/Scripts/vendors/linericon/style.css")
 
     @Scripts.Render("~/Scripts/js/jquery-3.2.1.min.js")
     @Scripts.Render("~/Scripts/js/popper.js")
@@ -21,11 +24,13 @@
     @Scripts.Render("~/Scripts/js/mail-script.js")
     @Scripts.Render("~/Scripts/js/stellar.js")
     @Scripts.Render("~/Scripts/js/custom.js")
-
     @Scripts.Render("~/Scripts/vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.js")
     @Scripts.Render("~/Scripts/vendors/nice-select/js/jquery.nice-select.js")
     @Scripts.Render("~/Scripts/vendors/lightbox/simpleLightbox.min.js")
     @Scripts.Render("~/Scripts/vendors/owl-carousel/owl.carousel.min.js")
+
+
+
 
 </head>
 <body>
@@ -45,10 +50,10 @@
                     <ul class="nav navbar-nav menu_nav ml-auto">
                         <li class="nav-item active">@Html.ActionLink("首頁", "Index", "Home", null, new {@class="nav-link"})</li>
                         <li class="nav-item active">@Html.ActionLink("關於", "About", "Home", null, new { @class = "nav-link" })</li>
-                        <li class="nav-item active">@Html.ActionLink("房型", "List", "Comment", null, new { @class = "nav-link" })</li>
-                        <li class="nav-item active">@Html.ActionLink("活動", "List", "Comment", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item active">@Html.ActionLink("房型", "List", "Room", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item active">@Html.ActionLink("活動", "Index", "Home", null, new { @class = "nav-link" })</li>
                         <li class="nav-item active">@Html.ActionLink("評論", "List", "Comment", null, new { @class = "nav-link" })</li>
-                        <li class="nav-item active">@Html.ActionLink("交通資訊", "List", "Comment", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item active">@Html.ActionLink("交通資訊", "Index", "Home", null, new { @class = "nav-link" })</li>
 
     
                     </ul>
